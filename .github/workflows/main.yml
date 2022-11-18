@@ -1,0 +1,16 @@
+on: [push]
+
+name: Test bicep
+jobs:
+  build-bicep:
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v3
+
+      - name: 'Test a build'
+        uses: azure/CLI@v1
+        with:        
+          azcliversion: 2.30.0
+          inlineScript: |
+            az build test.bicep
+
